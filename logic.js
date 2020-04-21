@@ -1,7 +1,3 @@
-var $paragraph = document.querySelector('p')
-
-$paragraph.textContent = 'Conteúdo inserido via javascript'
-
 //INÍCIO DA DECLARAÇÃO DAS VARIÁVEIS
 var count = 0;
 var enviar = document.getElementById("gwt-debug-acquire_task_button");
