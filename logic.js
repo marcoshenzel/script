@@ -11,6 +11,8 @@ var a2 = document.createElement('a');
 var elemento_audio = document.createElement('audio');
 var source = document.createElement('source');
 var source1 = document.createElement('source');
+var urlOgg = document.createElement('p');
+var urlMp3 = document.createElement('p');
 //FINAL DA DECLARAÇÃO DAS VARIÁVEIS
 
 //INICIO AUDIO DIV
@@ -20,15 +22,21 @@ elemento_audio.setAttribute('id', 'audio');
 document.body.appendChild(elemento_audio);
 div.appendChild(elemento_audio);
 //source.setAttribute('src', '04 - Fear Is The Key.ogg');
-source.setAttribute('src', srcOgg);
+source.setAttribute('src', urlOgg.innerText);
 source.setAttribute('type', 'audio/ogg');
 document.body.appendChild(source);
 elemento_audio.appendChild(source);
 //source1.setAttribute('src', '04 - Fear Is The Key.mp3');
-source1.setAttribute('src', urlMp3);
+source1.setAttribute('src', urlMp3.innerText);
 source1.setAttribute('type', 'audio/mpeg');
 document.body.appendChild(source1);
 elemento_audio.appendChild(source1);
+urlOgg.setAttribute('id', 'e_urlOgg');
+document.body.appendChild(urlOgg);
+urlOgg.appendChild(document.createTextNode('https://www.botecodigital.info/exemplos/audio/i_am_the_doctor.ogg'));
+urlMp3.setAttribute('id', 'e_urlMp3');
+document.body.appendChild(urlMp3);
+urlMp3.appendChild(document.createTextNode('https://www.botecodigital.info/exemplos/audio/i_am_the_doctor.mp3'));
 
 //INÍCIO BARRA PROGRESSO
 progresso.setAttribute('id', 'barra_progresso');
@@ -45,8 +53,8 @@ span1.appendChild(document.createTextNode('00:01:41'));
 div.appendChild(span1);
 // FINAL AUDIO DIV
 
-// INÍCIO LÓGICA SCRIPT DO ÁUDIO
 
+// INÍCIO LÓGICA SCRIPT DO ÁUDIO
 audio = document.getElementById('audio');
 
 audio.addEventListener('play', play_evento, false);
