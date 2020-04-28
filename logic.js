@@ -34,7 +34,7 @@ source.setAttribute('type', 'audio/ogg');
 document.body.appendChild(source);
 elemento_audio.appendChild(source);
 //source1.setAttribute('src', '04 - Fear Is The Key.mp3');
-source.setAttribute('id', 's_mp3');
+source1.setAttribute('id', 's_mp3');
 source1.setAttribute('src', urlMp3.innerText);
 source1.setAttribute('type', 'audio/mpeg');
 document.body.appendChild(source1);
