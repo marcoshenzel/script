@@ -16,6 +16,12 @@ var urlMp3 = document.createElement('p');
 //FINAL DA DECLARAÇÃO DAS VARIÁVEIS
 
 //INICIO AUDIO DIV
+urlOgg.setAttribute('id', 'e_urlOgg');
+document.body.appendChild(urlOgg);
+urlOgg.appendChild(document.createTextNode('https://www.botecodigital.info/exemplos/audio/i_am_the_doctor.ogg'));
+urlMp3.setAttribute('id', 'e_urlMp3');
+document.body.appendChild(urlMp3);
+urlMp3.appendChild(document.createTextNode('https://www.botecodigital.info/exemplos/audio/i_am_the_doctor.mp3'));
 div.setAttribute('id', 'audiodiv');
 document.body.appendChild(div);
 elemento_audio.setAttribute('id', 'audio');
@@ -31,12 +37,6 @@ source1.setAttribute('src', urlMp3.innerText);
 source1.setAttribute('type', 'audio/mpeg');
 document.body.appendChild(source1);
 elemento_audio.appendChild(source1);
-urlOgg.setAttribute('id', 'e_urlOgg');
-document.body.appendChild(urlOgg);
-urlOgg.appendChild(document.createTextNode('https://www.botecodigital.info/exemplos/audio/i_am_the_doctor.ogg'));
-urlMp3.setAttribute('id', 'e_urlMp3');
-document.body.appendChild(urlMp3);
-urlMp3.appendChild(document.createTextNode('https://www.botecodigital.info/exemplos/audio/i_am_the_doctor.mp3'));
 
 //INÍCIO BARRA PROGRESSO
 progresso.setAttribute('id', 'barra_progresso');
