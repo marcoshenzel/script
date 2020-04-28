@@ -19,11 +19,13 @@ document.body.appendChild(div);
 elemento_audio.setAttribute('id', 'audio');
 document.body.appendChild(elemento_audio);
 div.appendChild(elemento_audio);
-source.setAttribute('src', 'https://www.botecodigital.info/exemplos/audio/i_am_the_doctor.ogg');
+//source.setAttribute('src', '04 - Fear Is The Key.ogg');
+source.setAttribute('src', srcOgg);
 source.setAttribute('type', 'audio/ogg');
 document.body.appendChild(source);
 elemento_audio.appendChild(source);
-source1.setAttribute('src', 'https://www.botecodigital.info/exemplos/audio/i_am_the_doctor.mp3');
+//source1.setAttribute('src', '04 - Fear Is The Key.mp3');
+source1.setAttribute('src', urlMp3);
 source1.setAttribute('type', 'audio/mpeg');
 document.body.appendChild(source1);
 elemento_audio.appendChild(source1);
@@ -49,6 +51,7 @@ audio = document.getElementById('audio');
 
 audio.addEventListener('play', play_evento, false);
 audio.addEventListener('timeupdate', atualizar, false);
+audio.addEventListener('loadedmetadata', loadedMetadata, false);
 
 function play() { audio.play(); }
 function pause() { audio.pause(); }
@@ -56,6 +59,13 @@ function stop() {
     audio.pause(); 
     audio.currentTime = 0; 
 }
+
+function loadedMetadata() {
+    channels          = audio.mozChannels;
+    rate              = audio.mozSampleRate;
+    frameBufferLength = audio.mozFrameBufferLength;      
+}
+
 function play_evento() { 
     document.getElementById('tempo_atual').innerHTML = secToStr(audio.currentTime);
     document.getElementById('tempo_total').innerHTML = secToStr(audio.duration);
