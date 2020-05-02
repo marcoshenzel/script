@@ -1,17 +1,17 @@
-//INÍCIO DA DECLARAÇÃO DAS VARIÁVEIS
-var ativo = false; //VARIÁVEL BOOLEANA (true or false)
-var div = document.createElement('div'); //VARIÁVEL PARA CRIAR O ELEMENTO DIV
-var elemento_audio = document.createElement('audio');//VARIÁVEL PARA CRIAR O ELEMENTO AUDIO
-var urlMp3 = document.createElement('p');//VARIÁVEL PARA CRIAR UM ELEMENTO P
-const button = document.querySelector('button') //CONSTANTE PARA MANIPULAR EVENTOS NO BOTÃO
-var srcPadrao = 'https://www.botecodigital.info/exemplos/audio/i_am_the_doctor.mp3';
-var botao = document.getElementById("gwt-debug-acquire_task_button"); //PEGA AS PROPRIEDADES DO BOTÃO QUE OBTÉM AS TAREFAS
-var max = 30000;  //VARIÁVEL INTEIRA PARA SETAR O TEMPO MÁXIMO PARA O AUTOCLICK
-var min = 1000;  //VARIÁVEL INTEIRA PARA SETAR O TEMPO MÍNIMO PARA O AUTOCLICK
-//FINAL DA DECLARAÇÃO DAS VARIÁVEIS
-
 //INÍCIO FUNÇÕES
 function init() {
+	//INÍCIO DA DECLARAÇÃO DAS VARIÁVEIS
+	var max = 30000;  //VARIÁVEL INTEIRA PARA SETAR O TEMPO MÁXIMO PARA O AUTOCLICK
+	var min = 1000;  //VARIÁVEL INTEIRA PARA SETAR O TEMPO MÍNIMO PARA O AUTOCLICK
+	var ativo = false; //VARIÁVEL BOOLEANA (true or false)
+	var botao = document.getElementById("gwt-debug-acquire_task_button"); //PEGA AS PROPRIEDADES DO BOTÃO QUE OBTÉM AS TAREFAS
+	var div = document.createElement('div'); //VARIÁVEL PARA CRIAR O ELEMENTO DIV
+	var elemento_audio = document.createElement('audio');//VARIÁVEL PARA CRIAR O ELEMENTO AUDIO
+	var urlMp3 = document.createElement('p');//VARIÁVEL PARA CRIAR UM ELEMENTO P
+	const button = document.querySelector('button') //CONSTANTE PARA MANIPULAR EVENTOS NO BOTÃO
+	var srcPadrao = 'https://www.botecodigital.info/exemplos/audio/i_am_the_doctor.mp3';
+	//FINAL DA DECLARAÇÃO DAS VARIÁVEIS
+
 	//INÍCIO AUDIO DIV
 	div.setAttribute('id', 'audioDiv');//SETANDO O ATRIBUTO ID NA audioDiv
 	document.body.appendChild(div);//INSERINDO A audioDiv NO BODY DA PÁGINA
@@ -35,8 +35,9 @@ function mensagem() {
         stop();
     }
 }
-function autoClick(max, min) {//FUNÇÃO PARA EXECUTAR O AUTOCLICK NO BOTÃO DE ADQUIRIR AS TAREFAS
+function run(max, min) {//FUNÇÃO PARA EXECUTAR O AUTOCLICK NO BOTÃO DE ADQUIRIR AS TAREFAS
 	// INÍCIO AUTO CLICK
+	init();
 	setInterval(function() {
 	    if (document.querySelector('#gwt-debug-acquire_task_button')){ //SE O BOTÃO DE ADQUIRIR TAREFAS EXISTIR NA PÁGINA
 	        ativo = false;
