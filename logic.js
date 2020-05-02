@@ -23,13 +23,30 @@ function init() {
 	//FINAL AUDIO DIV
 }
 
-function play() { audio.play(); } //FUNÇÃO PARA EXECUÇÃO DO ÁUDIO
-function stop() {  //FUNÇÃO PARA PARAR O ÁUDIO, FAZENDO COM QUE O MESMO VOLTE DO INÍCIO QUANDO INICIAR O play() NOVAMENTE
-    audio.pause(); 
-    audio.currentTime = 0; 
-}
-function mensagem() {
+function trocaFaixa(url) {
+	audio.src = url;
 	play();
+	audio.muted = true;
+}
+
+function play() {//FUNÇÃO PARA EXECUÇÃO DO ÁUDIO
+	audio.play(); 
+	mute();
+} 
+function stop() {  //FUNÇÃO PARA PARAR O ÁUDIO, FAZENDO COM QUE O MESMO VOLTE DO INÍCIO QUANDO INICIAR O play() NOVAMENTE
+	mute();
+    audio.pause(); //FUNÇÃO PADRÃO PARA PAUSAR O ÁUDIO
+    audio.currentTime = 0;  //VARIÁVEL PADRÃO PARA DEFINIR EM QUAL SEGUNDO O ÁUDIO VAI INICIAR
+}
+function mute() {
+	if (audio.muted) {
+		audio.muted = false;
+	} else {
+		audio.muted = true;
+	}
+}
+function mensagem() { //MÉTODO PARA ENVIAR A MENSAGEM PARA O USUÁRIO QUANDO ENCONTRAR UMA NOVA TAREFA
+	play(); //MÉTODO PARA TOCAR A MÚSICA
     //setTimeout(function() {}, 8460000);
     if (confirm("NOVA TAREFA, BORA TRABALHAR!!")) {
         ativo = true;
