@@ -30,13 +30,14 @@ function trocaFaixa(url) {
 }
 
 function play() {//FUNÇÃO PARA EXECUÇÃO DO ÁUDIO
+   	audio.currentTime = 0;  //VARIÁVEL PADRÃO PARA DEFINIR EM QUAL SEGUNDO O ÁUDIO VAI INICIAR
 	audio.play(); 
 	mute();
 } 
 function stop() {  //FUNÇÃO PARA PARAR O ÁUDIO, FAZENDO COM QUE O MESMO VOLTE DO INÍCIO QUANDO INICIAR O play() NOVAMENTE
 	mute();
-    audio.pause(); //FUNÇÃO PADRÃO PARA PAUSAR O ÁUDIO
-    audio.currentTime = 0;  //VARIÁVEL PADRÃO PARA DEFINIR EM QUAL SEGUNDO O ÁUDIO VAI INICIAR
+    	audio.pause(); //FUNÇÃO PADRÃO PARA PAUSAR O ÁUDIO
+    	audio.currentTime = 0;  //VARIÁVEL PADRÃO PARA DEFINIR EM QUAL SEGUNDO O ÁUDIO VAI INICIAR
 }
 function mute() {
 	if (audio.muted) {
@@ -47,11 +48,11 @@ function mute() {
 }
 function mensagem() { //MÉTODO PARA ENVIAR A MENSAGEM PARA O USUÁRIO QUANDO ENCONTRAR UMA NOVA TAREFA
 	play(); //MÉTODO PARA TOCAR A MÚSICA
-    //setTimeout(function() {}, 8460000);
-    if (confirm("NOVA TAREFA, BORA TRABALHAR!!")) {
-        ativo = true;
-        stop();
-    }
+	//setTimeout(function() {}, 8460000);
+	if (confirm("NOVA TAREFA, BORA TRABALHAR!!")) {
+		ativo = true;
+		stop();
+    	}
 }
 function run(max, min) {//FUNÇÃO PARA EXECUTAR O AUTOCLICK NO BOTÃO DE ADQUIRIR AS TAREFAS
 	// INÍCIO AUTO CLICK
