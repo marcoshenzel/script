@@ -1,103 +1,53 @@
-//INÍCIO DA DECLARAÇÃO DAS VARIÁVEIS
-var count = 0;
-var enviar = document.getElementById("gwt-debug-acquire_task_button");
-var div = document.createElement('div');
-var progresso = document.createElement('progress');
-var span = document.createElement('span');
-var span1 = document.createElement('span');
-var a = document.createElement('a');
-var a1 = document.createElement('a');
-var a2 = document.createElement('a');
-var elemento_audio = document.createElement('audio');
-//var source = document.createElement('source');
-var source1 = document.createElement('source');
-var urlOgg = document.createElement('p');
-var urlMp3 = document.createElement('p');
-//FINAL DA DECLARAÇÃO DAS VARIÁVEIS
+//INÍCIO FUNÇÕES
+var max = 30000;  //VARIÁVEL INTEIRA PARA SETAR O TEMPO MÁXIMO PARA O AUTOCLICK
+var min = 1000;  //VARIÁVEL INTEIRA PARA SETAR O TEMPO MÍNIMO PARA O AUTOCLICK
 
-//INICIO AUDIO DIV
-urlOgg.setAttribute('id', 'e_urlOgg');
-document.body.appendChild(urlOgg);
-urlOgg.appendChild(document.createTextNode('https://www.botecodigital.info/exemplos/audio/i_am_the_doctor.ogg'));
-urlMp3.setAttribute('id', 'e_urlMp3');
-document.body.appendChild(urlMp3);
-urlMp3.appendChild(document.createTextNode('https://www.botecodigital.info/exemplos/audio/i_am_the_doctor.mp3'));
-div.setAttribute('id', 'audiodiv');
-document.body.appendChild(div);
-elemento_audio.setAttribute('id', 'audio');
-document.body.appendChild(elemento_audio);
-div.appendChild(elemento_audio);
-//source.setAttribute('src', '04 - Fear Is The Key.ogg');
-//source.setAttribute('id', 's_ogg');
-//source.setAttribute('src', urlOgg.innerText);
-//source.setAttribute('type', 'audio/ogg');
-//document.body.appendChild(source);
-//elemento_audio.appendChild(source);
-//source1.setAttribute('src', '04 - Fear Is The Key.mp3');
-source1.setAttribute('id', 's_mp3');
-source1.setAttribute('src', urlMp3.innerText);
-source1.setAttribute('type', 'audio/mpeg');
-document.body.appendChild(source1);
-elemento_audio.appendChild(source1);
+function init() {
+	//INÍCIO DA DECLARAÇÃO DAS VARIÁVEIS
+	var ativo = false; //VARIÁVEL BOOLEANA (true or false)
+	var botao = document.getElementById("gwt-debug-acquire_task_button"); //PEGA AS PROPRIEDADES DO BOTÃO QUE OBTÉM AS TAREFAS
+	var div = document.createElement('div'); //VARIÁVEL PARA CRIAR O ELEMENTO DIV
+	var elemento_audio = document.createElement('audio');//VARIÁVEL PARA CRIAR O ELEMENTO AUDIO
+	var urlMp3 = document.createElement('p');//VARIÁVEL PARA CRIAR UM ELEMENTO P
+	const button = document.querySelector('button') //CONSTANTE PARA MANIPULAR EVENTOS NO BOTÃO
+	var srcPadrao = 'https://www.botecodigital.info/exemplos/audio/i_am_the_doctor.mp3';
+	//FINAL DA DECLARAÇÃO DAS VARIÁVEIS
 
-//INÍCIO BARRA PROGRESSO
-progresso.setAttribute('id', 'barra_progresso');
-progresso.setAttribute('max', '101.359456');
-progresso.setAttribute('value', '0.022154');
-document.body.appendChild(progresso);
-//FINAL BARRA PROGRESSO
+	//INÍCIO AUDIO DIV
+	div.setAttribute('id', 'audioDiv');//SETANDO O ATRIBUTO ID NA audioDiv
+	document.body.appendChild(div);//INSERINDO A audioDiv NO BODY DA PÁGINA
+	elemento_audio.setAttribute('id', 'audio');//SETANDO O ATRIBUTO ID NO ELEMENTO audio
+	elemento_audio.setAttribute('src', srcPadrao);//SETANDO O ATRIBUTO src NO ELEMENTO audio
+	document.body.appendChild(elemento_audio);//INSERINDO O ELEMENTO audio NO BODY DA PÁGINA
+	div.appendChild(elemento_audio);//INSERINDO O ELEMENTO audio DENTRO DA audioDiv
+	//FINAL AUDIO DIV
+}
 
-span.setAttribute('id', 'tempo_atual');
-span.appendChild(document.createTextNode('00:00:00'));
-div.appendChild(span);
-span1.setAttribute('id', 'tempo_total');
-span1.appendChild(document.createTextNode('00:01:41'));
-div.appendChild(span1);
-// FINAL AUDIO DIV
-
-
-// INÍCIO LÓGICA SCRIPT DO ÁUDIO
-audio = document.getElementById('audio');
-
-audio.addEventListener('play', play_evento, false);
-audio.addEventListener('timeupdate', atualizar, false);
-audio.addEventListener('loadedmetadata', loadedMetadata, false);
-
-function play() { audio.play(); }
-function pause() { audio.pause(); }
-function stop() { 
+function play() { audio.play(); } //FUNÇÃO PARA EXECUÇÃO DO ÁUDIO
+function stop() {  //FUNÇÃO PARA PARAR O ÁUDIO, FAZENDO COM QUE O MESMO VOLTE DO INÍCIO QUANDO INICIAR O play() NOVAMENTE
     audio.pause(); 
     audio.currentTime = 0; 
 }
-
-function loadedMetadata() {
-    channels          = audio.mozChannels;
-    rate              = audio.mozSampleRate;
-    frameBufferLength = audio.mozFrameBufferLength;      
+function mensagem() {
+	play();
+    //setTimeout(function() {}, 8460000);
+    if (confirm("NOVA TAREFA, BORA TRABALHAR!!")) {
+        ativo = true;
+        stop();
+    }
 }
-
-function play_evento() { 
-    document.getElementById('tempo_atual').innerHTML = secToStr(audio.currentTime);
-    document.getElementById('tempo_total').innerHTML = secToStr(audio.duration);
-
-    document.getElementById('barra_progresso').max = audio.duration;
-    document.getElementById('barra_progresso').value = audio.currentTime;
+function autoClick(max, min) {//FUNÇÃO PARA EXECUTAR O AUTOCLICK NO BOTÃO DE ADQUIRIR AS TAREFAS
+	// INÍCIO AUTO CLICK
+	setInterval(function() {
+	    if (document.querySelector('#gwt-debug-acquire_task_button')){ //SE O BOTÃO DE ADQUIRIR TAREFAS EXISTIR NA PÁGINA
+	        ativo = false;
+	        botao.click();
+	    } else {
+	        if (ativo == false) {
+	            mensagem();
+	        }
+	    }
+	}, Math.floor(Math.random() * max + min)); //UM CLICK ALEATÓRIO ENTRE UM TEMPO MÁXIMO EM MILISEGUNDOS E UM TEMPO MÁXIMO EM MILISEGUNDOS
+	// FINAL AUTO CLICK
 }
-function atualizar() {
-    document.getElementById('tempo_atual').innerHTML = secToStr(audio.currentTime);
-    document.getElementById('barra_progresso').value = audio.currentTime;
-}
-
-function secToStr(sec_num) {
-    sec_num = Math.floor(sec_num);
-    var horas = Math.floor(sec_num / 3600);
-    var minutos = Math.floor((sec_num - (horas * 3600)) / 60);
-    var segundos = sec_num - (horas * 3600) - (minutos * 60);
-
-    if (horas < 10) {horas = "0"+horas;}
-    if (minutos < 10) {minutos = "0"+minutos;}
-    if (segundos < 10) {segundos = "0"+segundos;}
-    var tempo = horas+':'+minutos+':'+segundos;
-    return tempo;
-}
-// FINAL LÓGICA SCRIPT DO ÁUDIO
+//FINAL FUNÇÕES
