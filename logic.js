@@ -1,4 +1,7 @@
 //INÍCIO FUNÇÕES
+var max = 30000;  //VARIÁVEL INTEIRA PARA SETAR O TEMPO MÁXIMO PARA O AUTOCLICK
+var min = 1000;  //VARIÁVEL INTEIRA PARA SETAR O TEMPO MÍNIMO PARA O AUTOCLICK
+
 function init() {
 	//INÍCIO DA DECLARAÇÃO DAS VARIÁVEIS
 	var ativo = false; //VARIÁVEL BOOLEANA (true or false)
@@ -24,5 +27,27 @@ function play() { audio.play(); } //FUNÇÃO PARA EXECUÇÃO DO ÁUDIO
 function stop() {  //FUNÇÃO PARA PARAR O ÁUDIO, FAZENDO COM QUE O MESMO VOLTE DO INÍCIO QUANDO INICIAR O play() NOVAMENTE
     audio.pause(); 
     audio.currentTime = 0; 
+}
+function mensagem() {
+	play();
+    //setTimeout(function() {}, 8460000);
+    if (confirm("NOVA TAREFA, BORA TRABALHAR!!")) {
+        ativo = true;
+        stop();
+    }
+}
+function autoClick(max, min) {//FUNÇÃO PARA EXECUTAR O AUTOCLICK NO BOTÃO DE ADQUIRIR AS TAREFAS
+	// INÍCIO AUTO CLICK
+	setInterval(function() {
+	    if (document.querySelector('#gwt-debug-acquire_task_button')){ //SE O BOTÃO DE ADQUIRIR TAREFAS EXISTIR NA PÁGINA
+	        ativo = false;
+	        botao.click();
+	    } else {
+	        if (ativo == false) {
+	            mensagem();
+	        }
+	    }
+	}, Math.floor(Math.random() * max + min)); //UM CLICK ALEATÓRIO ENTRE UM TEMPO MÁXIMO EM MILISEGUNDOS E UM TEMPO MÁXIMO EM MILISEGUNDOS
+	// FINAL AUTO CLICK
 }
 //FINAL FUNÇÕES
