@@ -1,10 +1,11 @@
+var botao = document.getElementById("gwt-debug-acquire_task_button"); //PEGA AS PROPRIEDADES DO BOTÃO QUE OBTÉM AS TAREFAS
+
 //INÍCIO FUNÇÕES
 function init() {
 	//INÍCIO DA DECLARAÇÃO DAS VARIÁVEIS
 	var max = 30000;  //VARIÁVEL INTEIRA PARA SETAR O TEMPO MÁXIMO PARA O AUTOCLICK
 	var min = 1000;  //VARIÁVEL INTEIRA PARA SETAR O TEMPO MÍNIMO PARA O AUTOCLICK
 	var ativo = false; //VARIÁVEL BOOLEANA (true or false)
-	var botao = document.getElementById("gwt-debug-acquire_task_button"); //PEGA AS PROPRIEDADES DO BOTÃO QUE OBTÉM AS TAREFAS
 	var div = document.createElement('div'); //VARIÁVEL PARA CRIAR O ELEMENTO DIV
 	var elemento_audio = document.createElement('audio');//VARIÁVEL PARA CRIAR O ELEMENTO AUDIO
 	var urlMp3 = document.createElement('p');//VARIÁVEL PARA CRIAR UM ELEMENTO P
