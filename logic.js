@@ -10,7 +10,7 @@ function init() {
 	var elemento_audio = document.createElement('audio');//VARIÁVEL PARA CRIAR O ELEMENTO AUDIO
 	var urlMp3 = document.createElement('p');//VARIÁVEL PARA CRIAR UM ELEMENTO P
 	const button = document.querySelector('button') //CONSTANTE PARA MANIPULAR EVENTOS NO BOTÃO
-	var srcPadrao = 'https://www.botecodigital.info/exemplos/audio/i_am_the_doctor.mp3';
+	var srcPadrao = '/diversos/sounds/i_am_the_doctor.mp3';
 	//FINAL DA DECLARAÇÃO DAS VARIÁVEIS
 
 	//INÍCIO AUDIO DIV
