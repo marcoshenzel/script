@@ -1,4 +1,4 @@
-var botao = document.getElementById("gwt-debug-acquire_task_button"); //PEGA AS PROPRIEDADES DO BOTÃO QUE OBTÉM AS TAREFAS
+var botao = document.getElementsByClassName("start-button"); //PEGA AS PROPRIEDADES DO BOTÃO QUE OBTÉM AS TAREFAS
 
 //INÍCIO FUNÇÕES
 function init() {
@@ -9,9 +9,8 @@ function init() {
 	var div = document.createElement('div'); //VARIÁVEL PARA CRIAR O ELEMENTO DIV
 	var elemento_audio = document.createElement('audio');//VARIÁVEL PARA CRIAR O ELEMENTO AUDIO
 	var urlMp3 = document.createElement('p');//VARIÁVEL PARA CRIAR UM ELEMENTO P
-	const button = document.querySelector('button') //CONSTANTE PARA MANIPULAR EVENTOS NO BOTÃO
-	var pastaBase = 'https://raw.githubusercontent.com/marcoshenzel/script/gh-pages/';
-	var srcPadrao = pastaBase + 'diversos/sounds/i_am_the_doctor.mp3';
+	//var pastaBase = 'https://raw.githubusercontent.com/marcoshenzel/script/gh-pages/';
+	var srcPadrao = 'https://www.botecodigital.info/exemplos/audio/i_am_the_doctor.mp3';
 	//FINAL DA DECLARAÇÃO DAS VARIÁVEIS
 
 	//INÍCIO AUDIO DIV
@@ -57,17 +56,17 @@ function mensagem() { //MÉTODO PARA ENVIAR A MENSAGEM PARA O USUÁRIO QUANDO EN
 }
 function run(max, min) {//FUNÇÃO PARA EXECUTAR O AUTOCLICK NO BOTÃO DE ADQUIRIR AS TAREFAS
 	// INÍCIO AUTO CLICK
-	init();
+	init(); // CRIA OS ELEMENTOS HTML NECESSÁRIOS PARA RODAR O ÁUDIO;
 	setInterval(function() {
-	    if (document.querySelector('#gwt-debug-acquire_task_button')){ //SE O BOTÃO DE ADQUIRIR TAREFAS EXISTIR NA PÁGINA
-	        ativo = false;
+	    if (botao.disabled = false){ //SE O BOTÃO DE ADQUIRIR TAREFAS EXISTIR NA PÁGINA
+	        ativo = true;
 	        botao.click();
 	    } else {
-	        if (ativo == false) {
+	        if (ativo == true) {
 	            mensagem();
 	        }
 	    }
-	}, Math.floor(Math.random() * max + min)); //UM CLICK ALEATÓRIO ENTRE UM TEMPO MÁXIMO EM MILISEGUNDOS E UM TEMPO MÁXIMO EM MILISEGUNDOS
+	}, 1000); //UM CLICK POR SEGUNDO
 	// FINAL AUTO CLICK
 }
 //FINAL FUNÇÕES
